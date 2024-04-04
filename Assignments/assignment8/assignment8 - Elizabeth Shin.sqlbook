@@ -98,11 +98,9 @@ alies, e.g. ``` ... AS ... ```
 -- Active: 1710938578760@@127.0.0.1@5432@postgres
 -- Write your own code
 
-SELECT nationality,
-        COUNT(DISTINCT nationality) AS unique_nationalities,
-        COUNT(*) AS total_rows
-FROM homework_data
-GROUP BY nationality;
+SELECT COUNT(DISTINCT nationality) AS unique_nationalities,
+COUNT(nationality) AS total_rows
+FROM homework_data;
 
 -- SQLBook: Markup
 <font size = "5">
@@ -124,7 +122,7 @@ SELECT driver_id,
     AVG(lap_times) AS mean_lap_times
 FROM homework_data
 GROUP BY driver_id
-ORDER BY mean_lap_times ASC;
+ORDER BY mean_lap_times;
 
 -- SQLBook: Markup
 <font size = "5">
@@ -180,10 +178,10 @@ DROP TABLE IF EXISTS lap_times;
 CREATE TABLE lap_times(
     "raceId" int,
     "driverId" int,
-    "lap" int,
-    "position" int,
-    "time" varchar(255),
-    "milliseconds" int
+    lap int,
+    position int,
+    time varchar(255),
+    milliseconds int
 );
 
 INSERT INTO lap_times VALUES (1,50,43,23,'6:32',22222)
